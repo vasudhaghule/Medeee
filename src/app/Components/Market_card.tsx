@@ -1,7 +1,10 @@
+// src/components/MarketCard.tsx
+
 import Image from "next/image";
 import { Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import React from "react";
+
 interface Option {
   label: string;
   percentage: number;
@@ -54,16 +57,14 @@ export default function MarketCard({
         </div>
 
         <div className="space-y-3">
-          {options?.length != 1
-            ? options?.map((option, i) => (
+          {options.length !== 1
+            ? options.map((option, i) => (
                 <React.Fragment key={i}>
                   <div className="flex items-center gap-4">
                     <div className="flex-1">
                       <div className="text-sm mb-1 flex justify-between">
                         <span>{option.label}</span>
-                        <span className="font-medium">
-                          {option.percentage}%
-                        </span>
+                        <span className="font-medium">{option.percentage}%</span>
                       </div>
                       <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                         <div
@@ -76,7 +77,7 @@ export default function MarketCard({
                       <Button
                         variant="outline"
                         size="sm"
-                        className="text-blue-600  hover:text-blue-700 hover:bg-blue-50"
+                        className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
                       >
                         Yes
                         {option.price?.yes && (
@@ -88,7 +89,7 @@ export default function MarketCard({
                       <Button
                         variant="outline"
                         size="sm"
-                        className="text-red-600  hover:text-red-700 hover:bg-red-50"
+                        className="text-red-600 hover:text-red-700 hover:bg-red-50"
                       >
                         No
                         {option.price?.no && (
@@ -101,15 +102,13 @@ export default function MarketCard({
                   </div>
                 </React.Fragment>
               ))
-            : options?.map((option, i) => (
+            : options.map((option, i) => (
                 <React.Fragment key={i}>
                   <div className="flex items-center gap-4">
                     <div className="flex-1">
                       <div className="text-sm mb-1 flex justify-between">
                         <span>{option.label}</span>
-                        <span className="font-medium">
-                          {option.percentage}%
-                        </span>
+                        <span className="font-medium">{option.percentage}%</span>
                       </div>
                       <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                         <div

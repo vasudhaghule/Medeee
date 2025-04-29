@@ -1,11 +1,11 @@
+// src/app/market/page.tsx
+
 "use client";
 
 import { useState } from "react";
-// import Link from "next/link";
 import { Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-// import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import MarketCard from "../Components/Market_card";
 import Footer from "../Components/PublicComponents/Footer";
@@ -58,9 +58,9 @@ export default function MarketsPage() {
       </div>
 
       <main className="mx-auto px-4 py-8 ">
-        <div className="flex  justify-between mb-8">
+        <div className="flex justify-between mb-8">
           <h1 className="text-2xl font-semibold">Markets</h1>
-          <div className=" items-center sm:flex hidden ">
+          <div className="items-center sm:flex hidden">
             <Tabs defaultValue="trending" className="mr-4 sm:block hidden">
               <TabsList className="h-auto p-0 bg-transparent gap-6 ">
                 {viewOptions?.map((option) => (
@@ -77,17 +77,17 @@ export default function MarketsPage() {
               </TabsList>
             </Tabs>
           </div>
-          <div className=" flex relative sm:hidden mr-[27px]">
+          <div className="flex relative sm:hidden mr-[27px]">
             <Button
               variant="ghost"
               onClick={() => setShowMenu((prev) => !prev)}
               size="icon"
-              className=" sm:hidden absolute overflow-visible block ml-2"
+              className="sm:hidden absolute overflow-visible block ml-2"
             >
               <Menu className="h-5 w-5" />
             </Button>
             {showMenu && (
-              <div className=" flex p-4 flex-col absolute  rounded-2xl bg-white z-50 w-[150px] shadow-md gap-4 items-center   top-[40px] right-[-5px] ">
+              <div className="flex p-4 flex-col absolute rounded-2xl bg-white z-50 w-[150px] shadow-md gap-4 items-center top-[40px] right-[-5px]">
                 {viewOptions?.map((option, index) => (
                   <p key={index}>{option}</p>
                 ))}
@@ -102,26 +102,28 @@ export default function MarketsPage() {
             title="Which Senators will vote for Kash Patel?"
             image={`https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-15%20at%2011.32.25%E2%80%AFam-hlpj18X6JEHzTWwz0WWZUfaJvN2aso.png`}
             options={[
-              { label: "Mitch McConnell", percentage: 22 },
-              { label: "Lisa Murkowski", percentage: 93 },
+              { label: "Mitch McConnell", percentage: 22, forecast: 5, change: -2 },
+              { label: "Chuck Schumer", percentage: 22, forecast: 5, change: -3 },
+              { label: "Ted Cruz", percentage: 55, forecast: 3, change: +5 },
             ]}
-            volume="1,625,342"
+            volume="34,892"
+            timeLeft="02:23:45"
           />
-          {/* Additional MarketCard components remain the same */}
+          <MarketCard
+            compact
+            title="Will Biden announce his re-election bid?"
+            image={`https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-15%20at%2011.32.25%E2%80%AFam-hlpj18X6JEHzTWwz0WWZUfaJvN2aso.png`}
+            options={[
+              { label: "Yes", percentage: 99, forecast: 10, change: +2 },
+              { label: "No", percentage: 1, forecast: 7, change: -4 },
+            ]}
+            volume="42,112"
+            timeLeft="12:15:34"
+          />
         </div>
       </main>
 
       <Footer />
-
-      <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </div>
   );
 }
