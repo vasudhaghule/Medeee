@@ -66,24 +66,25 @@ export default function Home() {
           /> */}
 
           <div className="grid md:grid-cols-3 gap-6">
-            <MarketCard
-              compact
-              title="Which Senators will vote for Kash Patel?"
-              image={`https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-15%20at%2011.32.25%E2%80%AFam-hlpj18X6JEHzTWwz0WWZUfaJvN2aso.png`}
-              options={[
-                { label: "Mitch McConnell", percentage: 22 },
-                { label: "Lisa Murkowski", percentage: 93 },
-              ]}
-              volume="1,625,342"
-            />
+          <MarketCard
+  compact
+  title="Which Senators will vote for Kash Patel?"
+  image={`https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-15%20at%2011.32.25%E2%80%AFam-hlpj18X6JEHzTWwz0WWZUfaJvN2aso.png`}
+  options={[
+    { label: "Mitch McConnell", percentage: 22, forecast: 10, change: +2 },
+    { label: "Lisa Murkowski", percentage: 93, forecast: 7, change: -1 },
+  ]}
+  volume="1,625,342"
+/>
+
 
             <MarketCard
               compact
               title='"Captain America: Brave New World" Rotten Tomatoes score?'
               image={`https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-15%20at%2011.32.25%E2%80%AFam-hlpj18X6JEHzTWwz0WWZUfaJvN2aso.png`}
               options={[
-                { label: "Above 50", percentage: 18 },
-                { label: "Above 45", percentage: 97 },
+                { label: "Above 50", percentage: 18,forecast: 10, change: +2  },
+                { label: "Above 45", percentage: 97,forecast: 7, change: -1 },
               ]}
               volume="1,618,243"
             />
@@ -100,6 +101,7 @@ export default function Home() {
                     yes: "170",
                     no: "212",
                   },
+                  forecast: 7, change: -1
                 },
               ]}
               volume="549,169"
@@ -112,8 +114,9 @@ export default function Home() {
               title="Top US iPhone app tomorrow?"
               image={`https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-15%20at%2011.32.25%E2%80%AFam-hlpj18X6JEHzTWwz0WWZUfaJvN2aso.png`}
               options={[
-                { label: "TikTok", percentage: 93 },
-                { label: "ChatGPT", percentage: 5 },
+                { label: "TikTok", percentage: 93 ,forecast: 7, change: -1},
+                { label: "ChatGPT", percentage: 5 ,forecast: 7, change: -1},
+
               ]}
               volume="1,191,577"
             />
@@ -123,8 +126,8 @@ export default function Home() {
               title="Highest temperature in NYC today?"
               image={`https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-15%20at%2011.32.25%E2%80%AFam-hlpj18X6JEHzTWwz0WWZUfaJvN2aso.png`}
               options={[
-                { label: "35° to 36°", percentage: 52 },
-                { label: "37° to 38°", percentage: 40 },
+                { label: "35° to 36°", percentage: 52 ,forecast: 7, change: -1},
+                { label: "37° to 38°", percentage: 40,forecast: 7, change: -1 },
               ]}
               volume="33,387,320"
               timeLeft="22:56:34"
@@ -135,8 +138,8 @@ export default function Home() {
               title="2026 Pro Football Champion?"
               image={`https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-15%20at%2011.32.25%E2%80%AFam-hlpj18X6JEHzTWwz0WWZUfaJvN2aso.png`}
               options={[
-                { label: "Buffalo", percentage: 12 },
-                { label: "Kansas City", percentage: 12 },
+                { label: "Buffalo", percentage: 12 ,forecast: 7, change: -1},
+                { label: "Kansas City", percentage: 12,forecast: 7, change: -1 },
               ]}
               volume="27,107,930"
             />
