@@ -2,12 +2,8 @@
 "use client";
 
 import { useState } from "react";
-// import Link from "next/link";
 import Image from "next/image";
-// import { Search } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-// import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Footer from "../Components/PublicComponents/Footer";
 import Header from "@/components/ui/Header";
@@ -127,6 +123,8 @@ export default function LivePage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
+
+      {/* Categories */}
       <div className="border-b">
         <div className="container mx-auto px-4">
           <div className="overflow-x-auto scrollbar-hide -mx-4 px-4">
@@ -144,23 +142,25 @@ export default function LivePage() {
         </div>
       </div>
 
+      {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
         <h2 className="text-2xl font-bold block sm:hidden mb-6">Today</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-12  gap-8">
-          <div className="col-span-8 order-2 md:order-1 ">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Events Section */}
+          <div className="col-span-8 order-2 md:order-1">
             <section className="mb-12">
               <h2 className="text-2xl font-bold hidden sm:block mb-6">Today</h2>
 
               {todayEvents.map((event) => (
                 <div
                   key={event.id}
-                  className="border-b py-4"
+                  className="border-b py-4 cursor-pointer"
                   onClick={() => setSelectedEvent(event)}
                 >
                   <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
                     <Image
                       src="/placeholder.svg?height=20&width=20"
-                      alt={event.type}
+                      alt="Event icon"
                       width={20}
                       height={20}
                       className="rounded-full"
@@ -170,92 +170,60 @@ export default function LivePage() {
 
                   {event.matches.map((match, idx) => (
                     <div key={idx} className="mb-4">
-                      {match.player1 ? (
-                        // Player vs Player format
+                      {"team1" in match ? (
+                        // It's a team vs team match
                         <>
                           <div className="flex justify-between items-center mb-2">
-                            <span className="font-medium">{match.player1}</span>
+                            <span className="font-medium">{match.team1}</span>
                             <div className="flex gap-2">
-                              <span className="font-bold">
-                                {match.player1Odds}
-                              </span>
                               <Button
                                 size="sm"
-                                variant="outline"
-                                className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 h-8"
+                                className="h-10 px-4 bg-blue-900 hover:bg-blue-800 text-white"
                               >
-                                Yes
-                              </Button>
-                              <Button
-                                size="sm"
-                                variant="outline"
-                                className="text-red-600 hover:text-red-700 hover:bg-red-50 h-8"
-                              >
-                                No
+                                {match.team1Code} {match.team1Odds}
                               </Button>
                             </div>
                           </div>
-                          <div className="flex justify-between items-center">
-                            <span className="font-medium">{match.player2}</span>
+                          <div className="flex justify-between items-center mb-2">
+                            <span className="font-medium">{match.team2}</span>
                             <div className="flex gap-2">
-                              <span className="font-bold">
-                                {match.player2Odds}
-                              </span>
                               <Button
                                 size="sm"
-                                variant="outline"
-                                className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 h-8"
+                                className="h-10 px-4 bg-red-600 hover:bg-red-700 text-white"
                               >
-                                Yes
-                              </Button>
-                              <Button
-                                size="sm"
-                                variant="outline"
-                                className="text-red-600 hover:text-red-700 hover:bg-red-50 h-8"
-                              >
-                                No
+                                {match.team2Code} {match.team2Odds}
                               </Button>
                             </div>
                           </div>
                         </>
                       ) : (
-                        // Team vs Team format
-                        <div className="flex flex-col gap-4">
-                          <div className="flex justify-between items-center">
-                            <div className="flex gap-2 items-center">
-                              <span className="font-medium">{match.team1}</span>
-                            </div>
-                            <div className="flex gap-2 items-center">
+                        // It's a player vs player match
+                        <>
+                          <div className="flex justify-between items-center mb-2">
+                            <span className="font-medium">{match.player1}</span>
+                            <div className="flex gap-2">
                               <Button
                                 size="sm"
-                                className="bg-blue-900 hover:bg-blue-800 text-white h-10 px-4"
+                                variant="outline"
+                                className="h-8"
                               >
-                                <span className="mr-1">{match.team1Code}</span>
-                                <span>{match.team1Odds}</span>
+                                Yes {match.player1Odds}
                               </Button>
-                              <span className="text-sm text-gray-500">
-                                $100 → $—
-                              </span>
                             </div>
                           </div>
-                          <div className="flex justify-between items-center">
-                            <div className="flex gap-2 items-center">
-                              <span className="font-medium">{match.team2}</span>
-                            </div>
-                            <div className="flex gap-2 items-center">
+                          <div className="flex justify-between items-center mb-2">
+                            <span className="font-medium">{match.player2}</span>
+                            <div className="flex gap-2">
                               <Button
                                 size="sm"
-                                className="bg-red-600 hover:bg-red-700 text-white h-10 px-4"
+                                variant="outline"
+                                className="h-8"
                               >
-                                <span className="mr-1">{match.team2Code}</span>
-                                <span>{match.team2Odds}</span>
+                                Yes {match.player2Odds}
                               </Button>
-                              <span className="text-sm text-gray-500">
-                                $100 → $—
-                              </span>
                             </div>
                           </div>
-                        </div>
+                        </>
                       )}
                     </div>
                   ))}
@@ -270,19 +238,20 @@ export default function LivePage() {
               ))}
             </section>
 
+            {/* Saturday Events */}
             <section>
               <h2 className="text-2xl font-bold mb-6">Sat, Mar 15</h2>
 
               {saturdayEvents.map((event) => (
                 <div
                   key={event.id}
-                  className="border-b py-4"
+                  className="border-b py-4 cursor-pointer"
                   onClick={() => setSelectedEvent(event)}
                 >
                   <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
                     <Image
                       src="/placeholder.svg?height=20&width=20"
-                      alt={event.type}
+                      alt="Event icon"
                       width={20}
                       height={20}
                       className="rounded-full"
@@ -291,43 +260,36 @@ export default function LivePage() {
                   </div>
 
                   {event.matches.map((match, idx) => (
-                    <div key={idx} className="mb-4">
-                      <div className="flex flex-col gap-4">
-                        <div className="flex justify-between items-center">
-                          <div className="flex gap-2 items-center">
-                            <span className="font-medium">{match.team1}</span>
-                          </div>
-                          <div className="flex gap-2 items-center">
-                            <Button
-                              size="sm"
-                              className="bg-blue-900 hover:bg-blue-800 text-white h-10 px-4"
-                            >
-                              <span className="mr-1">{match.team1Code}</span>
-                              <span>{match.team1Odds}</span>
-                            </Button>
-                            <span className="text-sm text-gray-500">
-                              $100 → $—
-                            </span>
-                          </div>
+                    <div key={idx} className="flex flex-col gap-4 mb-4">
+                      {[
+                        {
+                          team: match.team1,
+                          code: match.team1Code,
+                          odds: match.team1Odds,
+                        },
+                        {
+                          team: match.team2,
+                          code: match.team2Code,
+                          odds: match.team2Odds,
+                        },
+                      ].map((team, i) => (
+                        <div
+                          key={i}
+                          className="flex justify-between items-center"
+                        >
+                          <span className="font-medium">{team.team}</span>
+                          <Button
+                            size="sm"
+                            className={`h-10 px-4 ${
+                              i === 0
+                                ? "bg-blue-900 hover:bg-blue-800 text-white"
+                                : "bg-orange-500 hover:bg-orange-600 text-white"
+                            }`}
+                          >
+                            {team.code} {team.odds}
+                          </Button>
                         </div>
-                        <div className="flex justify-between items-center">
-                          <div className="flex gap-2 items-center">
-                            <span className="font-medium">{match.team2}</span>
-                          </div>
-                          <div className="flex gap-2 items-center">
-                            <Button
-                              size="sm"
-                              className="bg-orange-500 hover:bg-orange-600 text-white h-10 px-4"
-                            >
-                              <span className="mr-1">{match.team2Code}</span>
-                              <span>{match.team2Odds}</span>
-                            </Button>
-                            <span className="text-sm text-gray-500">
-                              $100 → $—
-                            </span>
-                          </div>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   ))}
 
@@ -342,76 +304,62 @@ export default function LivePage() {
             </section>
           </div>
 
-          <div className=" col-span-8 sm:col-span-4 order-1 md:order-2">
+          {/* Sidebar */}
+          <div className="col-span-8 sm:col-span-4 order-1 md:order-2">
             <div className="border rounded-lg p-6 sticky top-8">
               <h3 className="font-medium mb-4">
-                {selectedEvent.type === "PGA THE Players" ||
-                selectedEvent.type === "LIV LIV Golf"
-                  ? "The Players Championship Winner?"
+                {selectedEvent.type.includes("Golf")
+                  ? "Golf Winner?"
                   : `${selectedEvent.matches[0]?.team1 || ""} vs ${
                       selectedEvent.matches[0]?.team2 || ""
                     }`}
               </h3>
 
-              {selectedEvent.type === "PGA THE Players" && (
-                <div className="mb-4">
-                  <div className="text-blue-600 font-medium">
-                    Buy Yes · Scottie Scheffler
-                  </div>
-                </div>
-              )}
+              {/* Tabs */}
+              <Tabs defaultValue="buy" className="w-full">
+                <TabsList className="grid grid-cols-2 w-full">
+                  <TabsTrigger
+                    value="buy"
+                    onClick={() => setSelectedTab("buy")}
+                  >
+                    Buy
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="sell"
+                    onClick={() => setSelectedTab("sell")}
+                  >
+                    Sell
+                  </TabsTrigger>
+                </TabsList>
+              </Tabs>
 
-              <div className="border-b mb-4">
-                <Tabs defaultValue="buy" className="w-full">
-                  <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger
-                      value="buy"
-                      onClick={() => setSelectedTab("buy")}
-                    >
-                      Buy
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="sell"
-                      onClick={() => setSelectedTab("sell")}
-                    >
-                      Sell
-                    </TabsTrigger>
-                  </TabsList>
-                </Tabs>
+              {/* Actions */}
+              <div className="grid grid-cols-2 gap-4 mt-6">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                  Yes 17¢
+                </Button>
+                <Button className="bg-purple-500 hover:bg-purple-600 text-white">
+                  No 85¢
+                </Button>
               </div>
 
-              <div className="mb-6">
-                <div className="text-sm text-gray-500 mb-2">Pick a side</div>
-                <div className="grid grid-cols-2 gap-4">
-                  <Button className="bg-blue-600 hover:bg-blue-700">
-                    Yes 17¢
-                  </Button>
-                  <Button className="bg-purple-500 hover:bg-purple-600">
-                    No 85¢
-                  </Button>
-                </div>
-              </div>
-
-              <div className="space-y-4 mb-6">
+              {/* Summary */}
+              <div className="text-sm text-gray-700 mt-6 space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-sm">Amount</span>
-                  <span className="font-medium">$0</span>
+                  <span>Amount</span> <span>$0</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm">Contracts</span>
-                  <span className="font-medium">0</span>
+                  <span>Contracts</span> <span>0</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm">Average price</span>
-                  <span className="font-medium">17¢</span>
+                  <span>Average price</span> <span>17¢</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm">Payout if Yes wins</span>
-                  <span className="font-medium">$0</span>
+                  <span>Payout if Yes wins</span> <span>$0</span>
                 </div>
               </div>
 
-              <Button className="w-full bg-blue-600 hover:bg-blue-700">
+              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white mt-6">
                 Get Access
               </Button>
             </div>
@@ -421,6 +369,7 @@ export default function LivePage() {
 
       <Footer />
 
+      {/* Hide scrollbar for categories */}
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
