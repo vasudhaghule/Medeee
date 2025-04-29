@@ -174,7 +174,7 @@ export function WealthPollCard() {
               <div className="flex gap-2  flex-col ">
                 <span className="font-bold text-xl">News</span>
                 <span className="text-gray-500">
-                  Tesla's stock dropped 13% on Monday, continuing a steep
+                  Tesla&apos;s stock dropped 13% on Monday, continuing a steep
                   decline that has wiped out nearly...
                 </span>
               </div>

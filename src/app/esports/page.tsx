@@ -1,16 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+
 import Image from "next/image";
-import { Search, ExternalLink } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/ui/Header";
 import Footer from "../Components/PublicComponents/Footer";
 import image from "../../../public/assets/IMG_5481@2x.png";
+import { ExternalLink } from "lucide-react";
 
 const categories = [
   "Trending",

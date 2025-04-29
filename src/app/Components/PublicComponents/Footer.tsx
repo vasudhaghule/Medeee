@@ -15,7 +15,7 @@ export default function Footer() {
               <Image src={Logo.src} width={100} height={100} className="mb-6" alt="Logo" />
             </Link>
             <p className="text-sm text-gray-600 max-w-sm">
-              Kalshi is a CFTC-regulated exchange where you can trade event contracts. We're building the world's first
+              Kalshi is a CFTC-regulated exchange where you can trade event contracts. We&apos;re building the world&apos;s first
               event trading platform.
             </p>
             <div className="flex gap-4 mt-6">

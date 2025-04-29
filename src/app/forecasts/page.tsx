@@ -3,10 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Search, ChevronRight, ArrowUp, ArrowDown } from "lucide-react";
+import { ChevronRight, ArrowUp, ArrowDown } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import Footer from "../Components/PublicComponents/Footer";
 import Header from "@/components/ui/Header";
 const chartData = [
@@ -85,7 +84,7 @@ export default function ForecastsPage() {
 
         <div className="grid gap-8 lg:grid-cols-2">
           <div>
-            <h1 className="text-2xl font-bold mb-6">Trump's first 100 days</h1>
+            <h1 className="text-2xl font-bold mb-6">Trump&apos;s first 100 days</h1>
 
             <div className="space-y-4">
               <h2 className="text-xl font-semibold">Who will be pardoned?</h2>

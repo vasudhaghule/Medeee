@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  Search,
+  // Search,
   Home,
   MessageCircle,
   Bookmark,
@@ -19,7 +19,7 @@ import {
 import image from "../../../public/assets/IMG_5481@2x.png";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+// import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 // import { Textarea } from "../Components/"
