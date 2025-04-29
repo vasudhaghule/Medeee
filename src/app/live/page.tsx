@@ -307,13 +307,15 @@ export default function LivePage() {
           {/* Sidebar */}
           <div className="col-span-8 sm:col-span-4 order-1 md:order-2">
             <div className="border rounded-lg p-6 sticky top-8">
-              <h3 className="font-medium mb-4">
-                {selectedEvent.type.includes("Golf")
-                  ? "Golf Winner?"
-                  : `${selectedEvent.matches[0]?.team1 || ""} vs ${
-                      selectedEvent.matches[0]?.team2 || ""
-                    }`}
-              </h3>
+            <h3 className="font-medium mb-4">
+  {selectedEvent.type === "PGA THE Players" ||
+  selectedEvent.type === "LIV LIV Golf"
+    ? "The Players Championship Winner?"
+    : selectedEvent.matches[0] && 'team1' in selectedEvent.matches[0]
+    ? `${selectedEvent.matches[0].team1} vs ${selectedEvent.matches[0].team2}`
+    : `${selectedEvent.matches[0]?.player1 || ""} vs ${selectedEvent.matches[0]?.player2 || ""}`}
+</h3>
+
 
               {/* Tabs */}
               <Tabs defaultValue="buy" className="w-full">
